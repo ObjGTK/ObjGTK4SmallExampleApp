@@ -19,11 +19,11 @@ $(OBJ)/%.o: %.m
 	@mkdir -p $(@D)
 	$(CC) $(OBJCFLAGS) $(CFLAGS) -c $< -o $@
 
-build: SmallExamppleApp
+build: SmallExampleApp
 
-install: SmallExamppleApp
+install: SmallExampleApp
 	@install -d $(DESTDIR)$(PREFIX)/bin/
 	@install -m 755 SmallExamppleApp $(DESTDIR)$(PREFIX)/bin/
 
-run: SmallExamppleApp
-	@./SmallExamppleApp
+run: SmallExampleApp
+	@./SmallExampleApp
