@@ -3,7 +3,7 @@ ifeq ($(PREFIX),)
 endif
 PATH  := /usr/local/bin:$(PATH)
 CC    := clang
-OBJCFLAGS := $$(objfw-config --objcflags --package OGObject --package ObjGTK4 --cppflags)
+OBJCFLAGS := $$(objfw-config --objcflags --arc --package OGObject --package ObjGTK4 --cppflags)
 LIBS := $$(objfw-config --package ObjGTK4 --rpath --libs)
 
 OBJ := obj

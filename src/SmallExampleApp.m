@@ -7,6 +7,9 @@
 #import <ObjGTK4/ObjGTK4-Umbrella.h>
 
 @interface SmallExampleApp: OFObject <OFApplicationDelegate>
+@property (strong) OGTKApplicationWindow *window;
+@property (strong) OGTKBox *box;
+@property (strong) OGTKButton *button;
 @end
 
 @implementation SmallExampleApp
@@ -35,22 +38,22 @@
 
 - (void)onActivate:(OGTKApplication *)app
 {
-	OGTKApplicationWindow *window = [[OGTKApplicationWindow alloc] init:app];
-	window.title = @"Hello, World!";
+	self.window = [[OGTKApplicationWindow alloc] init:app];
+	self.window.title = @"Hello, World!";
 
-	[window setDefaultSizeWithWidth:640 height:480];
+	[self.window setDefaultSizeWithWidth:640 height:480];
 
-	OGTKBox *box = [[OGTKBox alloc] initWithOrientation:GTK_ORIENTATION_VERTICAL spacing:0];
-	box.halign = GTK_ALIGN_CENTER;
-	box.valign = GTK_ALIGN_CENTER;
+	self.box = [[OGTKBox alloc] initWithOrientation:GTK_ORIENTATION_VERTICAL spacing:0];
+	self.box.halign = GTK_ALIGN_CENTER;
+	self.box.valign = GTK_ALIGN_CENTER;
 
-	window.child = box;
+	self.window.child = self.box;
 
-	OGTKButton *button = [[OGTKButton alloc] initWithLabel:@"Button clicked 0 times"];
-	[button connectSignal:@"clicked" target:self selector:@selector(onButtonClicked:)];
+	self.button = [[OGTKButton alloc] initWithLabel:@"Button clicked 0 times"];
+	[self.button connectSignal:@"clicked" target:self selector:@selector(onButtonClicked:)];
 
-	[box append:button];
-	[window present];
+	[self.box append:self.button];
+	[self.window present];
 }
 
 - (void)onButtonClicked:(OGTKButton *)button
