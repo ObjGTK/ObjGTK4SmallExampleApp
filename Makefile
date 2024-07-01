@@ -26,3 +26,7 @@ install: SmallExampleApp
 
 run: SmallExampleApp
 	@./SmallExampleApp
+
+clean:
+	@rm -rf $(OBJ)
+	@rm -f SmallExampleApp
