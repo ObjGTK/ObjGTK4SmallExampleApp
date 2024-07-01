@@ -32,7 +32,7 @@
 	// ObjFW runloop
 	[[OFApplication sharedApplication] getArgumentCount:&argc andArgumentValues:&argv];
 
-	ret = [app runWithArgc:0 argv:*argv];
+	ret = [app runWithArgc:*argc argv:*argv];
 	[OFApplication terminateWithStatus:ret];
 }
 
