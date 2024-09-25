@@ -24,7 +24,7 @@
 	OGTKApplication *app =
 	    [[OGTKApplication alloc] initWithApplicationId:@"net.frityet.exampleApp"
 	                                             flags:G_APPLICATION_DEFAULT_FLAGS];
-	[app connectSignal:@"activate" target:self selector:@selector(onActivate:)];
+	[app connectSignal:@"activate" target:self selector:@selector(applicationWillActivate:)];
 
 	// ObjFW runloop
 	[[OFApplication sharedApplication] getArgumentCount:&argc andArgumentValues:&argv];
@@ -33,7 +33,7 @@
 	[OFApplication terminateWithStatus:ret];
 }
 
-- (void)onActivate:(OGTKApplication *)app
+- (void)applicationWillActivate:(OGTKApplication *)app
 {
 	OGTKApplicationWindow *window = [[OGTKApplicationWindow alloc] init:app];
 	window.title = @"Hello, World!";
@@ -47,13 +47,13 @@
 	window.child = box;
 
 	OGTKButton *button = [[OGTKButton alloc] initWithLabel:@"Button clicked 0 times"];
-	[button connectSignal:@"clicked" target:self selector:@selector(onButtonClicked:)];
+	[button connectSignal:@"clicked" target:self selector:@selector(buttonClicked:)];
 
 	[box append:button];
 	[window present];
 }
 
-- (void)onButtonClicked:(OGTKButton *)button
+- (void)buttonClicked:(OGTKButton *)button
 {
 	button.label = [OFString stringWithFormat:@"Button clicked %zu times", ++count];
 }
