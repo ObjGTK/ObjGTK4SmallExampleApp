@@ -24,7 +24,7 @@
 	OGTKApplication *app =
 	    [[OGTKApplication alloc] initWithApplicationId:@"net.frityet.exampleApp"
 	                                             flags:G_APPLICATION_DEFAULT_FLAGS];
-	[app connectSignal:@"activate" target:self selector:@selector(applicationWillActivate:)];
+	[app connectSignal:@"activate" target:self selector:@selector(activateApplication:)];
 
 	// ObjFW runloop
 	[[OFApplication sharedApplication] getArgumentCount:&argc andArgumentValues:&argv];
@@ -33,10 +33,10 @@
 	[OFApplication terminateWithStatus:ret];
 }
 
-- (void)applicationWillActivate:(OGTKApplication *)app
+- (void)activateApplication:(OGTKApplication *)app
 {
 	OGTKApplicationWindow *window = [[OGTKApplicationWindow alloc] init:app];
-	window.title = @"Hello, World!";
+	window.title = @"GTK4 by Objective-C using ObjFW";
 
 	[window setDefaultSizeWithWidth:640 height:480];
 
