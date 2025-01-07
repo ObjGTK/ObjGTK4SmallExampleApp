@@ -35,7 +35,7 @@
 
 - (void)activateApplication:(OGTKApplication *)app
 {
-	OGTKApplicationWindow *window = [[OGTKApplicationWindow alloc] init:app];
+	OGTKApplicationWindow *window = [[OGTKApplicationWindow alloc] initWithApplication:app];
 	window.title = @"GTK4 by Objective-C using ObjFW";
 
 	[window setDefaultSizeWithWidth:640 height:480];
