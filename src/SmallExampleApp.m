@@ -22,8 +22,8 @@
 
 	// GTK runloop
 	OGTKApplication *app =
-	    [[OGTKApplication alloc] initWithApplicationId:@"net.frityet.exampleApp"
-	                                             flags:G_APPLICATION_DEFAULT_FLAGS];
+	    [OGTKApplication applicationWithApplicationId:@"net.frityet.exampleApp"
+	                                            flags:G_APPLICATION_DEFAULT_FLAGS];
 	[app connectSignal:@"activate" target:self selector:@selector(activateApplication:)];
 
 	// ObjFW runloop
@@ -35,18 +35,18 @@
 
 - (void)activateApplication:(OGTKApplication *)app
 {
-	OGTKApplicationWindow *window = [[OGTKApplicationWindow alloc] initWithApplication:app];
+	OGTKApplicationWindow *window = [OGTKApplicationWindow applicationWindow:app];
 	window.title = @"GTK4 by Objective-C using ObjFW";
 
 	[window setDefaultSizeWithWidth:640 height:480];
 
-	OGTKBox *box = [[OGTKBox alloc] initWithOrientation:GTK_ORIENTATION_VERTICAL spacing:0];
+	OGTKBox *box = [OGTKBox boxWithOrientation:GTK_ORIENTATION_VERTICAL spacing:0];
 	box.halign = GTK_ALIGN_CENTER;
 	box.valign = GTK_ALIGN_CENTER;
 
 	window.child = box;
 
-	OGTKButton *button = [[OGTKButton alloc] initWithLabel:@"Button clicked 0 times"];
+	OGTKButton *button = [OGTKButton buttonWithLabel:@"Button clicked 0 times"];
 	[button connectSignal:@"clicked" target:self selector:@selector(buttonClicked:)];
 
 	[box append:button];
