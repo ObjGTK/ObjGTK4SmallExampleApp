@@ -35,7 +35,7 @@
 
 - (void)activateApplication:(OGTKApplication *)app
 {
-	OGTKApplicationWindow *window = [OGTKApplicationWindow applicationWindow:app];
+	OGTKApplicationWindow *window = [OGTKApplicationWindow applicationWindowWithApplication:app];
 	window.title = @"GTK4 by Objective-C using ObjFW";
 
 	[window setDefaultSizeWithWidth:640 height:480];
@@ -49,7 +49,7 @@
 	OGTKButton *button = [OGTKButton buttonWithLabel:@"Button clicked 0 times"];
 	[button connectSignal:@"clicked" target:self selector:@selector(buttonClicked:)];
 
-	[box append:button];
+	[box appendWithChild:button];
 	[window present];
 }
 
